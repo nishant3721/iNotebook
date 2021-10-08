@@ -33,7 +33,7 @@ const NoteState = (props) => {
   // Authenticate a user - Login
   const userLogin = async (email, password) => {
     // APi call
-    const response = await fetch(`${host}/api/auth/login`, {
+    const response = await fetch(`/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
