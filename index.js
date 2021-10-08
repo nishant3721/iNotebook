@@ -14,6 +14,9 @@ app.use("/api/notes", require("./routes/notes"));
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("inotebook/build"));
+  app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "./inotebook/build/index.html"));
+  });
 }
 
 app.listen(port, () => {
