@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 
 const NoteState = (props) => {
   const history = useHistory();
-  const host = "http://localhost:5000" || process.env.PORT;
+  const port = process.env.PORT || 5000;
+  const host = `http://localhost:${port}`;
   const [notes, setNotes] = useState([]);
 
   // Create a user - Sign up

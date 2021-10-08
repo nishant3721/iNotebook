@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
     "both": "concurrently \"npm --prefix inotebook run start\" \"supervisor index.js\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix inotebook && npm run build --prefix inotebook"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix inotebook && npm run build --prefix inotebook",
+    "start": "node index.js"
   },
   "author": "Nishant Singh",
   "license": "ISC",

@@ -2,6 +2,7 @@ import React from "react";
 import { useContext, useState, useEffect, useRef } from "react";
 import noteContext from "../context/notes/noteContext";
 import NoteItem from "./NoteItem";
+import { Form, Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "../custom.css";
 
@@ -59,68 +60,76 @@ export default function Home() {
   };
 
   return (
-    <div className="container top-margin">
-      <h1 className="my-4">Take a note...</h1>
-      <form onSubmit={handleOnSubmit}>
-        <div className="row mb-3">
-          <label htmlFor="title" className="col-sm-2 col-form-label">
-            Title
-          </label>
-          <div className="col-sm-10">
-            <input
-              placeholder="Title should be greater than 3 characters"
-              onChange={handleOnChange}
-              type="text"
-              className="form-control"
-              id="title"
-              name="title"
-              value={addNote.title}
-              minLength={3}
-              />
-          </div>
+    <Container>
+      <h1 className="my-5">Take a note...</h1>
+      <Form onSubmit={handleOnSubmit}>
+        <Form.Group className="mb-3" controlId="title">
+          <Form.Label>Title*</Form.Label>
+          <Form.Control
+            onChange={handleOnChange}
+            type="text"
+            placeholder="title should be greater than 3 characters"
+            name="title"
+            value={addNote.title}
+            minLength={3}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="description">
+          <Form.Label>Description*</Form.Label>
+          <Form.Control
+            onChange={handleOnChange}
+            type="description"
+            placeholder="description should be greater than 5 characters"
+            name="description"
+            value={addNote.description}
+            minLength={5}
+            required
+          />
+        </Form.Group>
+
+        <div className="my-3">
+          <Form.Check
+            onClick={handleOnChange}
+            inline
+            label="Important"
+            name="tag"
+            value="Important"
+            type="radio"
+            id={`tag`}
+          />
+          <Form.Check
+            onClick={handleOnChange}
+            inline
+            label="Personal"
+            name="tag"
+            value="Personal"
+            type="radio"
+            id={`tag`}
+          />
+          <Form.Check
+            onClick={handleOnChange}
+            inline
+            label="Shopping"
+            name="tag"
+            value="Shopping"
+            type="radio"
+            id={`tag`}
+          />
+          <Form.Check
+            onClick={handleOnChange}
+            inline
+            label="Other"
+            name="tag"
+            value="Other"
+            type="radio"
+            id={`tag`}
+          />
         </div>
-        <div className="row mb-3">
-          <label htmlFor="description" className="col-sm-2 col-form-label">
-            Description
-          </label>
-          <div className="col-sm-10">
-            <input
-              placeholder="Description should be greater than 3 characters"
-              onChange={handleOnChange}
-              type="description"
-              className="form-control"
-              id="description"
-              name="description"
-              value={addNote.description}
-              minLength={3}
-              />
-          </div>
-        </div>
-        <div className="row mb-3">
-          <label htmlFor="tag" className="col-sm-2 col-form-label">
-            Tag
-          </label>
-          <div className="col-sm-10">
-            <input
-              onChange={handleOnChange}
-              type="text"
-              className="form-control"
-              id="tag"
-              name="tag"
-              value={addNote.tag}
-            />
-          </div>
-        </div>
-        <button
-          disabled={
-            addNote.title.length <= 3 || addNote.description.length <= 5
-          }
-          type="submit"
-          className="btn btn-primary"
-        >
+        <Button className="mt-3" variant="outline-primary" type="submit">
           Add Note
-        </button>
-      </form>
+        </Button>
+      </Form>
 
       {/*  <!-- Update Modal --> */}
 
@@ -247,6 +256,6 @@ export default function Home() {
           })}
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

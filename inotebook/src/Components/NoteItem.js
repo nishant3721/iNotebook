@@ -6,7 +6,19 @@ export default function NoteItem(props) {
   const { note, updateNote } = props;
 
   return (
-    <div className="card text-white bg-primary mb-3">
+    <div
+      className={`card text-white bg-${
+        note.tag === `Important`
+          ? `dark`
+          : note.tag === `Personal`
+          ? `primary`
+          : note.tag === `Shopping`
+          ? `success`
+          : note.tag === `Other`
+          ? `secondary`
+          : `info`
+      } mb-3`}
+    >
       <div className="card-header">{note.tag}</div>
       <div className="card-body">
         <h5 className="card-title">{note.title}</h5>
