@@ -12,7 +12,7 @@ export default function LandingPage() {
       <header className="page-header gradient">
         <Container>
           <Row className="align-items-center">
-            <Col md={6} className="text-center">
+            <Col md={6} className="text-center pt-5">
               <h2
                 style={{
                   fontFamily: "'Lobster', cursive",
